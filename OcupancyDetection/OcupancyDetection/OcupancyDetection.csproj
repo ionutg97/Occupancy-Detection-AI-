@@ -43,8 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Chromosome.cs" />
+    <Compile Include="EvolutionaryAlgorithm\Chromosome.cs" />
     <Compile Include="DataSet.cs" />
+    <Compile Include="EvolutionaryAlgorithm\Crossover.cs" />
+    <Compile Include="EvolutionaryAlgorithm\EvolutionaryAlgorithm.cs" />
+    <Compile Include="EvolutionaryAlgorithm\Mutation.cs" />
+    <Compile Include="EvolutionaryAlgorithm\Selection.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +80,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

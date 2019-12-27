@@ -37,8 +37,8 @@ namespace OcupancyDetection
                     inputData.x[j] = Double.Parse(args[j + 1]);
                 }
                 dataset.instanta[i - 1] = inputData;
-                dataset.y[i - 1] = Double.Parse(args[args.Length - 1]);
-
+                double y = Double.Parse(args[args.Length - 1]) ;
+                dataset.y[i - 1] = y == 0.0 ? -1.0 : 1.0;   //transformarea in -1 sau 1
             }
         }
     }
