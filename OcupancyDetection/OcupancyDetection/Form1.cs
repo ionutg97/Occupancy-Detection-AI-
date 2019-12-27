@@ -18,8 +18,9 @@ namespace OcupancyDetection
 
         private void button1_Click(object sender, EventArgs e)
         {
-        
-            string[] lines = System.IO.File.ReadAllLines("Dataset/datatraining.txt");
+
+           // string[] lines = System.IO.File.ReadAllLines("Dataset/datatraining.txt");
+            string[] lines = System.IO.File.ReadAllLines("Dataset/test.txt");//2100 instante
 
             DataSet dataset = new DataSet(lines.Length - 1);
             String[] args;
@@ -40,6 +41,19 @@ namespace OcupancyDetection
                 double y = Double.Parse(args[args.Length - 1]) ;
                 dataset.y[i - 1] = y == 0.0 ? -1.0 : 1.0;   //transformarea in -1 sau 1
             }
+
+
+            EvolutionaryAlgorithm.EvolutionaryAlgorithm ea = new EvolutionaryAlgorithm.EvolutionaryAlgorithm();
+
+            int populationNumber = Int32.Parse(populationSize.Text);
+            int generations = Int32.Parse(maxGenerations.Text);
+            double crossover = Double.Parse(crossoverRate.Text);
+            double mutation = Double.Parse(mutationRate.Text);
+            double cost = Double.Parse(C.Text);
+
+            Chromosome solution = ea.Solve(dataset, populationNumber, generations, crossover, mutation,cost);
+            output.Text = solution.ToString();
+
         }
     }
 }

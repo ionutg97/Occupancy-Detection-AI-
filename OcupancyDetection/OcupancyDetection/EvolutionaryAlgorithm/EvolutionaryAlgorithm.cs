@@ -2,51 +2,53 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace OcupancyDetection.EvolutionaryAlgorithm
 {
-    class EvolutionaryAlgorithm
+    public class EvolutionaryAlgorithm
     { 
         private static Random _rand = new Random();
-        public static void ComputeFitness(Chromosome chromosome,DataSet dataSet)
+        public static void ComputeFitness(Chromosome chromosome, DataSet dataSet)
         {
             //trebuie fortata constrangerea
             double[] oldAlfa = chromosome.alfa;
             double[] newAlfa = new double[oldAlfa.Length];
-           
-            for(int i=0;i<oldAlfa.Length;i++)
+
+            for (int i = 0; i < oldAlfa.Length; i++)
             {
                 newAlfa[i] = oldAlfa[i];    //copiez vechile valori
             }
 
 
             double suma = 0.0;
-            for(int j = 0; j < oldAlfa.Length; j++) { 
-           
-                suma += oldAlfa[j] * dataSet.y[j];
-            }
-            double sumaPozitiva, sumaNegativa;
 
-            while (suma != 0)
+            double sumaPozitiva = 0.0;
+            double sumaNegativa = 0.0;
+            for (int j = 0; j < newAlfa.Length; j++)
             {
-                sumaPozitiva = 0;
-                sumaNegativa = 0;
-                for (int j = 0; j < newAlfa.Length; j++)
+                if (newAlfa[j] != 0.0)
                 {
-                    if(dataSet.y[j] == 1)
-                       sumaPozitiva += newAlfa[j] * dataSet.y[j];
+                    if (dataSet.y[j] == 1)
+                        sumaPozitiva += newAlfa[j];
                     else
-                        sumaNegativa += newAlfa[j] * dataSet.y[j];
+                        sumaNegativa += newAlfa[j];
                 }
+            }
+            suma = sumaPozitiva - sumaNegativa;
+
+            while (suma != 0.0)
+            {
+
                 int indexk;
-                if (sumaPozitiva>sumaNegativa)
+                if (sumaPozitiva > sumaNegativa)
                 {
-                    
+
                     do
                     {
                         indexk = _rand.Next(0, newAlfa.Length);
 
-                    } while (dataSet.y[indexk] != 1);   //aleg o valoare cu plus
+                    } while ((dataSet.y[indexk] != 1.0) && (newAlfa[indexk] != 0.0));   //aleg o valoare cu plus
                 }
                 else
                 {
@@ -54,43 +56,55 @@ namespace OcupancyDetection.EvolutionaryAlgorithm
                     {
                         indexk = _rand.Next(0, newAlfa.Length);
 
-                    } while (dataSet.y[indexk] != -1);   //aleg o valoare cu minus
+                    } while ((dataSet.y[indexk] != -1.0) && (newAlfa[indexk] != 0.0));   //aleg o valoare cu minus
                 }
+                if (suma < 0) suma = -suma;
 
-                if(newAlfa[indexk] > suma)
+                if (newAlfa[indexk] > suma)
                 {
-                    newAlfa[indexk] -= suma;    
+                    newAlfa[indexk] -= suma;
                 }
                 else
                 {
                     newAlfa[indexk] = 0.0;
                 }
 
-
-                suma = 0.0;
+                sumaPozitiva = 0.0;
+                sumaNegativa = 0.0;
                 for (int j = 0; j < newAlfa.Length; j++)
                 {
-                    suma += newAlfa[j] * dataSet.y[j];
+                    if (newAlfa[j] != 0.0)
+                    {
+                        if (dataSet.y[j] == 1)
+                            sumaPozitiva += newAlfa[j];
+                        else
+                            sumaNegativa += newAlfa[j];
+                    }
                 }
 
+                suma = sumaPozitiva - sumaNegativa;
+
             }
 
-           
-           double suma1 = 0.0; //prima suma din functie
-            for (int j = 0; j < newAlfa.Length; j++)
-            {
-                suma1 += newAlfa[j];
-            }
+            chromosome.alfa = newAlfa;
+            double suma1 = 0.0; //prima suma din functie
+         
             double suma2 = 0.0;
 
-            for(int i=0;i<newAlfa.Length;i++)
+            for (int i = 0; i < newAlfa.Length; i++)
             {
-                for(int j=0;j<newAlfa.Length;j++)
+                if (newAlfa[i] != 0.0)
                 {
-                    suma2 += dataSet.y[i] * dataSet.y[j] * newAlfa[i] * newAlfa[j] * produsScalar(dataSet.instanta[i].x, dataSet.instanta[j].x);
-              
+                    suma1 += newAlfa[i];
+                    for (int j = 0; j < newAlfa.Length; j++)
+                    {
+                        if (newAlfa[j] != 0.0)
+                        {
+                            suma2 += dataSet.y[i] * dataSet.y[j] * newAlfa[i] * newAlfa[j] * produsScalar(dataSet.instanta[i].x, dataSet.instanta[j].x);
+                        }
+                    }
                 }
-            }
+            } 
 
             double fitness = suma1 - (1.0 / 2.0) * suma2;
             chromosome.Fitness = fitness;
@@ -105,10 +119,9 @@ namespace OcupancyDetection.EvolutionaryAlgorithm
             return rezultat;
         }
 
-        public Chromosome Solve(DataSet dataSet, int populationSize, int maxGenerations, double crossoverRate, double mutationRate)
+        public Chromosome Solve(DataSet dataSet, int populationSize, int maxGenerations, double crossoverRate, double mutationRate,double C)
         {
 
-            double C = 100;
             Chromosome[] population = new Chromosome[populationSize];
             for (int i = 0; i < population.Length; i++)
             {
@@ -138,6 +151,7 @@ namespace OcupancyDetection.EvolutionaryAlgorithm
 
                 for (int i = 0; i < populationSize; i++)
                     population[i] = newPopulation[i];
+
             }
 
             return Selection.GetBest(population);

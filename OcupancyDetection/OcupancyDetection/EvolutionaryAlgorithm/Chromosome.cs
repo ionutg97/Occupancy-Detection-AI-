@@ -45,6 +45,19 @@ namespace OcupancyDetection
                 alfa[i] = c.alfa[i];
             }
         }
+        override
+        public String ToString()
+        {
+            String rez = "";
+            for(int i=0;i<noGenes;i++)
+            {
+                if (alfa[i] != 0.0)
+                    rez += alfa[i].ToString() + " ";
+
+            }
+            rez += "\nF: " + this.Fitness;
+            return rez;
+        }
 
     }
 }
