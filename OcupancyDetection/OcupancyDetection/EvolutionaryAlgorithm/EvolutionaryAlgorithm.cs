@@ -13,17 +13,17 @@ namespace OcupancyDetection.EvolutionaryAlgorithm
             //trebuie fortata constrangerea
             double[] oldAlfa = chromosome.alfa;
             double[] newAlfa = new double[oldAlfa.Length];
-            int i;
-            for(i=0;i<oldAlfa.Length;i++)
+           
+            for(int i=0;i<oldAlfa.Length;i++)
             {
                 newAlfa[i] = oldAlfa[i];    //copiez vechile valori
             }
 
 
-            double suma = 0;
-            for(int j=0;j<oldAlfa.Length;j++)
-            {
-                suma += oldAlfa[i] * dataSet.y[i];
+            double suma = 0.0;
+            for(int j = 0; j < oldAlfa.Length; j++) { 
+           
+                suma += oldAlfa[j] * dataSet.y[j];
             }
             double sumaPozitiva, sumaNegativa;
 
@@ -33,10 +33,10 @@ namespace OcupancyDetection.EvolutionaryAlgorithm
                 sumaNegativa = 0;
                 for (int j = 0; j < newAlfa.Length; j++)
                 {
-                    if(dataSet.y[i] == 1)
-                       sumaPozitiva += newAlfa[i] * dataSet.y[i];
+                    if(dataSet.y[j] == 1)
+                       sumaPozitiva += newAlfa[j] * dataSet.y[j];
                     else
-                        sumaNegativa += newAlfa[i] * dataSet.y[i];
+                        sumaNegativa += newAlfa[j] * dataSet.y[j];
                 }
                 int indexk;
                 if (sumaPozitiva>sumaNegativa)
@@ -63,20 +63,46 @@ namespace OcupancyDetection.EvolutionaryAlgorithm
                 }
                 else
                 {
-                    newAlfa[indexk] = 0;
+                    newAlfa[indexk] = 0.0;
                 }
 
 
-                suma = 0;
+                suma = 0.0;
                 for (int j = 0; j < newAlfa.Length; j++)
                 {
-                    suma += newAlfa[i] * dataSet.y[i];
+                    suma += newAlfa[j] * dataSet.y[j];
                 }
 
             }
 
+           
+           double suma1 = 0.0; //prima suma din functie
+            for (int j = 0; j < newAlfa.Length; j++)
+            {
+                suma1 += newAlfa[j];
+            }
+            double suma2 = 0.0;
 
+            for(int i=0;i<newAlfa.Length;i++)
+            {
+                for(int j=0;j<newAlfa.Length;j++)
+                {
+                    suma2 += dataSet.y[i] * dataSet.y[j] * newAlfa[i] * newAlfa[j] * produsScalar(dataSet.instanta[i].x, dataSet.instanta[j].x);
+              
+                }
+            }
 
+            double fitness = suma1 - (1.0 / 2.0) * suma2;
+            chromosome.Fitness = fitness;
+        }
+        public static double produsScalar(double [] xi, double [] xj)
+        {
+            double rezultat = 0.0;
+            for(int i=0;i<xi.Length;i++)
+            {
+                rezultat += xi[i] * xj[i];
+            }
+            return rezultat;
         }
 
         public Chromosome Solve(DataSet dataSet, int populationSize, int maxGenerations, double crossoverRate, double mutationRate)
