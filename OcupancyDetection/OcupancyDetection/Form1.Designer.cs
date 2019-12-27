@@ -62,7 +62,7 @@
             this.populationSize.Name = "populationSize";
             this.populationSize.Size = new System.Drawing.Size(73, 20);
             this.populationSize.TabIndex = 2;
-            this.populationSize.Text = "200";
+            this.populationSize.Text = "30";
             // 
             // maxGenerations
             // 
@@ -70,7 +70,7 @@
             this.maxGenerations.Name = "maxGenerations";
             this.maxGenerations.Size = new System.Drawing.Size(73, 20);
             this.maxGenerations.TabIndex = 3;
-            this.maxGenerations.Text = "500";
+            this.maxGenerations.Text = "1000";
             // 
             // crossoverRate
             // 
@@ -86,7 +86,7 @@
             this.mutationRate.Name = "mutationRate";
             this.mutationRate.Size = new System.Drawing.Size(73, 20);
             this.mutationRate.TabIndex = 5;
-            this.mutationRate.Text = "0.3";
+            this.mutationRate.Text = "0.1";
             // 
             // C
             // 
@@ -94,7 +94,7 @@
             this.C.Name = "C";
             this.C.Size = new System.Drawing.Size(73, 20);
             this.C.TabIndex = 6;
-            this.C.Text = "100";
+            this.C.Text = "0.1";
             // 
             // textBox6
             // 
