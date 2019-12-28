@@ -87,6 +87,7 @@ namespace OcupancyDetection.EvolutionaryAlgorithm
         }
         public static void ComputeFitness(Chromosome chromosome, DataSet dataSet)
         {
+            double gamma = 1;
             //trebuie fortata constrangerea, ajustam valorile afla ca suma de alfai * yi = 0 ;
             double []newAlfa = AdjustmentAlgorithm(chromosome.alfa, dataSet.y);
             chromosome.alfa = newAlfa;
@@ -103,7 +104,7 @@ namespace OcupancyDetection.EvolutionaryAlgorithm
                     {
                         if (newAlfa[j] != 0.0)
                         {
-                            suma2 += dataSet.y[i] * dataSet.y[j] * newAlfa[i] * newAlfa[j] * produsScalar(dataSet.instanta[i].x, dataSet.instanta[j].x);
+                            suma2 += dataSet.y[i] * dataSet.y[j] * newAlfa[i] * newAlfa[j] * gaussianKernel(dataSet.instanta[i].x, dataSet.instanta[j].x,gamma);
                         }
                     }
                 }
@@ -120,6 +121,15 @@ namespace OcupancyDetection.EvolutionaryAlgorithm
                 rezultat += xi[i] * xj[i];
             }
             return rezultat;
+        }
+        public static double gaussianKernel(double []x,double [] z,double gamma)
+        {
+            double[] diference = new double [x.Length];
+            for(int i=0;i<x.Length;i++)
+            {
+                diference[i] = x[i] - z[i];
+            }
+            return -gamma * produsScalar(diference, diference); //se simplifica radicalul cu patratul
         }
 
         public Chromosome Solve(DataSet dataSet, int populationSize, int maxGenerations, double crossoverRate, double mutationRate,double C)
