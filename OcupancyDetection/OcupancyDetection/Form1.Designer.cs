@@ -35,7 +35,11 @@
             this.crossoverRate = new System.Windows.Forms.TextBox();
             this.mutationRate = new System.Windows.Forms.TextBox();
             this.C = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -50,7 +54,7 @@
             // 
             // output
             // 
-            this.output.Location = new System.Drawing.Point(26, 77);
+            this.output.Location = new System.Drawing.Point(29, 70);
             this.output.Name = "output";
             this.output.Size = new System.Drawing.Size(796, 239);
             this.output.TabIndex = 1;
@@ -70,7 +74,7 @@
             this.maxGenerations.Name = "maxGenerations";
             this.maxGenerations.Size = new System.Drawing.Size(73, 20);
             this.maxGenerations.TabIndex = 3;
-            this.maxGenerations.Text = "1000";
+            this.maxGenerations.Text = "10000";
             // 
             // crossoverRate
             // 
@@ -94,21 +98,63 @@
             this.C.Name = "C";
             this.C.Size = new System.Drawing.Size(73, 20);
             this.C.TabIndex = 6;
-            this.C.Text = "0.1";
+            this.C.Text = "10";
             // 
-            // textBox6
+            // label1
             // 
-            this.textBox6.Location = new System.Drawing.Point(624, 30);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(73, 20);
-            this.textBox6.TabIndex = 7;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(43, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(78, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Population size";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(137, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(114, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Number of generations";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(274, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(78, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Crossorver rate";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(395, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(69, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Mutation rate";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(512, 9);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(46, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Costul C";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(864, 342);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.C);
             this.Controls.Add(this.mutationRate);
             this.Controls.Add(this.crossoverRate);
@@ -132,7 +178,11 @@
         private System.Windows.Forms.TextBox crossoverRate;
         private System.Windows.Forms.TextBox mutationRate;
         private System.Windows.Forms.TextBox C;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }
 

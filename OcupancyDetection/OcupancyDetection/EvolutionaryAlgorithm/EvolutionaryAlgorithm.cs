@@ -9,10 +9,9 @@ namespace OcupancyDetection.EvolutionaryAlgorithm
     public class EvolutionaryAlgorithm
     { 
         private static Random _rand = new Random();
-        public static void ComputeFitness(Chromosome chromosome, DataSet dataSet)
+
+        public static double[] AdjustmentAlgorithm(double [] oldAlfa,double [] y)
         {
-            //trebuie fortata constrangerea
-            double[] oldAlfa = chromosome.alfa;
             double[] newAlfa = new double[oldAlfa.Length];
 
             for (int i = 0; i < oldAlfa.Length; i++)
@@ -29,7 +28,7 @@ namespace OcupancyDetection.EvolutionaryAlgorithm
             {
                 if (newAlfa[j] != 0.0)
                 {
-                    if (dataSet.y[j] == 1)
+                    if (y[j] == 1)
                         sumaPozitiva += newAlfa[j];
                     else
                         sumaNegativa += newAlfa[j];
@@ -39,7 +38,7 @@ namespace OcupancyDetection.EvolutionaryAlgorithm
 
             while (suma != 0.0)
             {
-
+                if (suma < 0) suma = -suma;
                 int indexk;
                 if (sumaPozitiva > sumaNegativa)
                 {
@@ -48,7 +47,18 @@ namespace OcupancyDetection.EvolutionaryAlgorithm
                     {
                         indexk = _rand.Next(0, newAlfa.Length);
 
-                    } while ((dataSet.y[indexk] != 1.0) && (newAlfa[indexk] != 0.0));   //aleg o valoare cu plus
+                    } while ((y[indexk] != 1.0) && (newAlfa[indexk] != 0.0));   //aleg o valoare cu plus
+                    if (newAlfa[indexk] > suma)
+                    {
+
+                        newAlfa[indexk] -= suma;    //scad suma din coeficient
+                        sumaPozitiva -= suma;    //actualizez suma coeficientilor pozitivi
+                    }
+                    else
+                    {
+                        sumaPozitiva -= newAlfa[indexk];    //din suma pozitiva se scade cat era in newalfa la positia indexk
+                        newAlfa[indexk] = 0.0;
+                    }
                 }
                 else
                 {
@@ -56,39 +66,32 @@ namespace OcupancyDetection.EvolutionaryAlgorithm
                     {
                         indexk = _rand.Next(0, newAlfa.Length);
 
-                    } while ((dataSet.y[indexk] != -1.0) && (newAlfa[indexk] != 0.0));   //aleg o valoare cu minus
-                }
-                if (suma < 0) suma = -suma;
-
-                if (newAlfa[indexk] > suma)
-                {
-                    newAlfa[indexk] -= suma;
-                }
-                else
-                {
-                    newAlfa[indexk] = 0.0;
-                }
-
-                sumaPozitiva = 0.0;
-                sumaNegativa = 0.0;
-                for (int j = 0; j < newAlfa.Length; j++)
-                {
-                    if (newAlfa[j] != 0.0)
+                    } while ((y[indexk] != -1.0) && (newAlfa[indexk] != 0.0));   //aleg o valoare cu minus
+                    if (newAlfa[indexk] > suma)
                     {
-                        if (dataSet.y[j] == 1)
-                            sumaPozitiva += newAlfa[j];
-                        else
-                            sumaNegativa += newAlfa[j];
+
+                        newAlfa[indexk] -= suma;    //scad suma din coeficient
+                        sumaNegativa -= suma;    //actualizez suma coeficientilor pozitivi
+                    }
+                    else
+                    {
+                        sumaNegativa -= newAlfa[indexk];    //din suma pozitiva se scade cat era in newalfa la positia indexk
+                        newAlfa[indexk] = 0.0;
                     }
                 }
 
                 suma = sumaPozitiva - sumaNegativa;
 
             }
-
+            return newAlfa;
+        }
+        public static void ComputeFitness(Chromosome chromosome, DataSet dataSet)
+        {
+            //trebuie fortata constrangerea, ajustam valorile afla ca suma de alfai * yi = 0 ;
+            double []newAlfa = AdjustmentAlgorithm(chromosome.alfa, dataSet.y);
             chromosome.alfa = newAlfa;
-            double suma1 = 0.0; //prima suma din functie
-         
+
+            double suma1 = 0.0; //prima suma din functie       
             double suma2 = 0.0;
 
             for (int i = 0; i < newAlfa.Length; i++)
@@ -106,7 +109,7 @@ namespace OcupancyDetection.EvolutionaryAlgorithm
                 }
             } 
 
-            double fitness = suma1 - (1.0 / 2.0) * suma2;
+            double fitness = suma1 - 0.5 * suma2;   //forma duala
             chromosome.Fitness = fitness;
         }
         public static double produsScalar(double [] xi, double [] xj)
@@ -123,7 +126,7 @@ namespace OcupancyDetection.EvolutionaryAlgorithm
         {
 
             Chromosome[] population = new Chromosome[populationSize];
-            for (int i = 0; i < population.Length; i++)
+            for (int i = 0; i < population.Length; i++) //initializare populatie
             {
                 population[i] = new Chromosome(dataSet.size, 0, C);
                 ComputeFitness(population[i],dataSet);
