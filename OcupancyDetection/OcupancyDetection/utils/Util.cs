@@ -21,12 +21,10 @@ namespace OcupancyDetection.utils
         
         public static double gaussianKernel(double[] x, double[] z, double gamma)
         {
-            double[] difference = new double[x.Length];
-            for(int i=0;i<x.Length;i++)
-            {
-                difference[i] = x[i] - z[i];
-            }
-            return -gamma * produsScalar(difference, difference);
+            double sum = 0.0;
+            for (int i = 0; i < x.Length; ++i)
+                sum += (x[i] - z[i]) * (x[i] - z[i]);
+            return Math.Exp(-gamma * sum);
         }
     
        
@@ -67,7 +65,7 @@ namespace OcupancyDetection.utils
                     {
                         indexk = _rand.Next(0, newAlfa.Length);
 
-                    } while ((y[indexk] != 1.0) && (newAlfa[indexk] != 0.0));   //aleg o valoare cu plus
+                    } while ((y[indexk] != 1.0) || (newAlfa[indexk] == 0.0));   //aleg o valoare cu plus
                     if (newAlfa[indexk] > suma)
                     {
 
@@ -86,7 +84,7 @@ namespace OcupancyDetection.utils
                     {
                         indexk = _rand.Next(0, newAlfa.Length);
 
-                    } while ((y[indexk] != -1.0) && (newAlfa[indexk] != 0.0));   //aleg o valoare cu minus
+                    } while ((y[indexk] != -1.0) || (newAlfa[indexk] == 0.0));   //aleg o valoare cu minus
                     if (newAlfa[indexk] > suma)
                     {
 

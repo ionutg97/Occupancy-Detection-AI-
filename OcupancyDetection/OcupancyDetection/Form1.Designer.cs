@@ -56,9 +56,9 @@
             // 
             // output
             // 
-            this.output.Location = new System.Drawing.Point(29, 70);
+            this.output.Location = new System.Drawing.Point(32, 140);
             this.output.Name = "output";
-            this.output.Size = new System.Drawing.Size(796, 239);
+            this.output.Size = new System.Drawing.Size(793, 169);
             this.output.TabIndex = 1;
             this.output.Text = "";
             // 
