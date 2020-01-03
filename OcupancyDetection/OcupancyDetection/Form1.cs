@@ -19,11 +19,11 @@ namespace OcupancyDetection
         public static DataSet readData(String filename,Boolean trainig)
         {
             string[] lines = System.IO.File.ReadAllLines("Dataset/"+filename);
-            int size = lines.Length - 1 , skip = 1;
-            if(trainig==true)   //pentru training iau doar 300 de instante pentru viteza
+            int size = lines.Length-1, skip = 1;
+            if(trainig==true)   //pentru training iau doar 100 de instante pentru viteza
             {
-                size = 300;
-                skip = 8000/300;
+                size = 100;
+                skip = 8000/size;
             }
 
             DataSet dataset = new DataSet(size);
@@ -31,7 +31,7 @@ namespace OcupancyDetection
             InputData inputData;
             int nrAtributes;
             int index = 1;
-            for (int i = 1; i < size*skip; i+=skip) //prima linie este capul de tabel
+            for (int i = 1; i <= size*skip; i+=skip) //prima linie este capul de tabel
             {
                 args = lines[i].Replace("\"", "").Split(','); //campurile instantei
                 nrAtributes = args.Length - 2; //primul e un id ce poate fi ignorat, iar ultimul este clasa
@@ -49,7 +49,7 @@ namespace OcupancyDetection
             return dataset;
         }
 
-        public static double ComputeB(double [] alfa, InputData [] x, double [] y)
+        public static double ComputeB(double [] alfa, InputData [] x, double [] y,double gamma)
         {
             int S = 0; //numarul vectorilor suport
             double sumat = 0.0, sumas = 0.0;
@@ -61,18 +61,18 @@ namespace OcupancyDetection
                     sumat = 0.0;
                     for(int t=0;t<alfa.Length;t++)
                     {
-                        if(alfa[t]!=0.0)
+                        if (alfa[t] != 0.0)
                         {
-                            sumat += alfa[t] * y[t] * utils.Util.gaussianKernel(x[t].x,x[s].x,1);
 
-                        }
+                            sumat += alfa[t] * y[t] * utils.Util.gaussianKernel(x[t].x, x[s].x, gamma);
+                        }       
                         
                     }
                     sumas += y[s] - sumat;
 
                 }
             }
-            return (1.0 / S) * sumas;
+            return (1.0 / (double)S) * sumas;
         }
 
         public static double functieDiscriminant(double []x, double [] alfa, DataSet dataset, double b,double gama)
@@ -80,10 +80,11 @@ namespace OcupancyDetection
             double suma = 0.0;
             for(int i=0;i<alfa.Length;i++)
             {
-               if(alfa[i]!=0.0) //altfel produsul ar fi 0
+                if (alfa[i] != 0.0) //altfel produsul ar fi 0
                 {
-                     suma += alfa[i] * dataset.y[i] * utils.Util.gaussianKernel(dataset.instanta[i].x, x,gama);
-           
+                  
+                        suma += alfa[i] * dataset.y[i] * utils.Util.gaussianKernel(dataset.instanta[i].x, x, gama);
+
                 }
             }
             return suma + b;
@@ -102,10 +103,11 @@ namespace OcupancyDetection
             double mutation = Double.Parse(mutationRate.Text);
             double cost = Double.Parse(C.Text);
             double gama = Double.Parse(gamma.Text);
+          
 
             Chromosome solution = ea.Solve(dataSet, populationNumber, generations, crossover, mutation,cost,gama);
-            output.Text += solution.ToString()  ;
-            double b = ComputeB(solution.alfa, dataSet.instanta, dataSet.y);
+            output.Text += solution.ToString();
+            double b = ComputeB(solution.alfa, dataSet.instanta, dataSet.y,gama);
 
             DataSet datatest = readData("datatest.txt",false);
 
@@ -119,7 +121,7 @@ namespace OcupancyDetection
 
                 nrTotal++;
             }
-            output.Text += "\n Procent clasificare: " +( (nrCorect/nrTotal)*100).ToString()+"%\n";
+            output.Text += "\nProcent clasificare datatest1 : " +( (nrCorect/nrTotal)*100).ToString()+"%\n";
              datatest = readData("datatest2.txt",false);
 
             nrTotal = 0.0;
@@ -133,7 +135,7 @@ namespace OcupancyDetection
 
                 nrTotal++;
             }
-            output.Text += "\n Procent clasificare2: " + ((nrCorect / nrTotal) * 100).ToString() + "%\n";
+            output.Text += "\nProcent clasificare datatest2 : " + ((nrCorect / nrTotal) * 100).ToString() + "%\n";
         }
     }
 }

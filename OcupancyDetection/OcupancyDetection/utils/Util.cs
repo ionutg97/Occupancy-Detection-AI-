@@ -24,10 +24,12 @@ namespace OcupancyDetection.utils
             double sum = 0.0;
             for (int i = 0; i < x.Length; ++i)
                 sum += (x[i] - z[i]) * (x[i] - z[i]);
+
             return Math.Exp(-gamma * sum);
         }
-    
-       
+
+
+
         public static double[] AdjustmentAlgorithm(double[] oldAlfa, double[] y)
         {
             double[] newAlfa = new double[oldAlfa.Length];
@@ -69,7 +71,7 @@ namespace OcupancyDetection.utils
                     if (newAlfa[indexk] > suma)
                     {
 
-                        newAlfa[indexk] -= suma;    //scad suma din coeficient
+                        newAlfa[indexk] =newAlfa[indexk] - suma;    //scad suma din coeficient
                         sumaPozitiva -= suma;    //actualizez suma coeficientilor pozitivi
                     }
                     else
@@ -88,7 +90,7 @@ namespace OcupancyDetection.utils
                     if (newAlfa[indexk] > suma)
                     {
 
-                        newAlfa[indexk] -= suma;    //scad suma din coeficient
+                        newAlfa[indexk] = newAlfa[indexk] - suma;    //scad suma din coeficient
                         sumaNegativa -= suma;    //actualizez suma coeficientilor pozitivi
                     }
                     else
@@ -101,6 +103,7 @@ namespace OcupancyDetection.utils
                 suma = sumaPozitiva - sumaNegativa;
 
             }
+           
             return newAlfa;
         }
     }

@@ -21,19 +21,17 @@ namespace OcupancyDetection.EvolutionaryAlgorithm
 
             for (int i = 0; i < newAlfa.Length; i++)
             {
-                if (newAlfa[i] != 0.0)
-                {
                     suma1 += newAlfa[i];
-                    for (int j = 0; j < newAlfa.Length; j++)
+                for (int j = 0; j < newAlfa.Length; j++)
+                {
+                    if (newAlfa[j] != 0.0 && newAlfa[i] != 0.0)
                     {
-                        if (newAlfa[j] != 0.0)
-                        {
-                              suma2 += dataSet.y[i] * dataSet.y[j] * newAlfa[i] * newAlfa[j] * utils.Util.gaussianKernel(dataSet.instanta[i].x, dataSet.instanta[j].x,gamma);
-                             // suma2 += dataSet.y[i] * dataSet.y[j] * newAlfa[i] * newAlfa[j] * utils.Util.produsScalar(dataSet.instanta[i].x, dataSet.instanta[j].x);
-
-                        }
+                    
+                            suma2 += dataSet.y[i] * dataSet.y[j] * newAlfa[i] * newAlfa[j] * utils.Util.gaussianKernel(dataSet.instanta[i].x, dataSet.instanta[j].x, gamma);
+                     
                     }
                 }
+                
             } 
 
             double fitness = suma1 - 0.5 * suma2;   //forma duala

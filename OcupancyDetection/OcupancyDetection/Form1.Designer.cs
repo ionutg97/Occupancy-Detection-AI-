@@ -56,9 +56,9 @@
             // 
             // output
             // 
-            this.output.Location = new System.Drawing.Point(32, 140);
+            this.output.Location = new System.Drawing.Point(32, 125);
             this.output.Name = "output";
-            this.output.Size = new System.Drawing.Size(793, 169);
+            this.output.Size = new System.Drawing.Size(793, 184);
             this.output.TabIndex = 1;
             this.output.Text = "";
             // 
@@ -153,7 +153,7 @@
             this.gamma.Name = "gamma";
             this.gamma.Size = new System.Drawing.Size(73, 20);
             this.gamma.TabIndex = 10;
-            this.gamma.Text = "2";
+            this.gamma.Text = "0.00001";
             // 
             // label6
             // 
@@ -184,7 +184,7 @@
             this.Controls.Add(this.output);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Ocupancy Detection";
             this.ResumeLayout(false);
             this.PerformLayout();
 
