@@ -4,10 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+
+
 namespace OcupancyDetection.EvolutionaryAlgorithm
 {
     public class EvolutionaryAlgorithm
-    { 
+    {
+        private static Double gamma = 0.1;
         private static Random _rand = new Random();
 
         public static double[] AdjustmentAlgorithm(double [] oldAlfa,double [] y)
@@ -103,12 +106,11 @@ namespace OcupancyDetection.EvolutionaryAlgorithm
                     {
                         if (newAlfa[j] != 0.0)
                         {
-                            suma2 += dataSet.y[i] * dataSet.y[j] * newAlfa[i] * newAlfa[j] * produsScalar(dataSet.instanta[i].x, dataSet.instanta[j].x);
+                            suma2 += dataSet.y[i] * dataSet.y[j] * newAlfa[i] * newAlfa[j] * RbfKernel(dataSet.instanta[i].x, dataSet.instanta[j].x);
                         }
                     }
                 }
             } 
-
             double fitness = suma1 - 0.5 * suma2;   //forma duala
             chromosome.Fitness = fitness;
         }
@@ -121,6 +123,52 @@ namespace OcupancyDetection.EvolutionaryAlgorithm
             }
             return rezultat;
         }
+
+        public static double RbfKernel(double[] v1, double[] v2)
+        {
+            double sum = 0.0;
+            for (int i = 0; i < v1.Length; ++i)
+                sum += (v1[i] - v2[i]) * (v1[i] - v2[i]);
+            return Math.Exp(-gamma * sum);
+        }
+
+        public static double getParameterB(double [] newAlfa, DataSet dataSet)
+        {
+            double suma1 = 0.0;
+            double suma2 = 0.0; 
+            int svmNumber = 0;
+            for (int i = 0; i < newAlfa.Length; i++)
+            {
+                if (newAlfa[i] != 0.0)
+                {
+                    svmNumber++;
+                    for (int j = 0; j < newAlfa.Length; j++)
+                    {
+                        if (newAlfa[j] != 0.0)
+                        {
+                            suma2 += newAlfa[j] * dataSet.y[j] * RbfKernel(dataSet.instanta[j].x , dataSet.instanta[i].x);
+                        }   
+                    }
+                    suma1 += dataSet.y[i] - suma2;
+                }
+            }
+            return 1 / svmNumber * suma1;
+        }
+
+        public static double discriminant(double [] newAlfa, DataSet dataSet)
+        {
+            double suma = 0.0;
+            double b = 0.0;
+            for (int i = 0; i < dataSet.instanta.Length; i++)
+            {
+                // al doilea argument este vectorul ce trebuie clasificat
+                suma += newAlfa[i] * dataSet.y[i] * RbfKernel(dataSet.instanta[i].x,dataSet.instanta[i].x);
+            }
+            b = getParameterB(newAlfa, dataSet);
+            return suma + b;
+        }
+
+
 
         public Chromosome Solve(DataSet dataSet, int populationSize, int maxGenerations, double crossoverRate, double mutationRate,double C)
         {
@@ -154,7 +202,6 @@ namespace OcupancyDetection.EvolutionaryAlgorithm
 
                 for (int i = 0; i < populationSize; i++)
                     population[i] = newPopulation[i];
-
             }
 
             return Selection.GetBest(population);

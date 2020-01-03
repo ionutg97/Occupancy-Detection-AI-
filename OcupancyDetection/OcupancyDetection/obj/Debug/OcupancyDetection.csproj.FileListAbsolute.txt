@@ -6,3 +6,11 @@ C:\Users\Eu\Desktop\ProiectIa\AI\OcupancyDetection\OcupancyDetection\obj\Debug\O
 C:\Users\Eu\Desktop\ProiectIa\AI\OcupancyDetection\OcupancyDetection\obj\Debug\OcupancyDetection.csproj.GenerateResource.Cache
 C:\Users\Eu\Desktop\ProiectIa\AI\OcupancyDetection\OcupancyDetection\obj\Debug\OcupancyDetection.exe
 C:\Users\Eu\Desktop\ProiectIa\AI\OcupancyDetection\OcupancyDetection\obj\Debug\OcupancyDetection.pdb
+C:\Users\ionut\OneDrive\Documents\facultate anul 4\AI\Proiect\AI\OcupancyDetection\OcupancyDetection\bin\Debug\OcupancyDetection.exe
+C:\Users\ionut\OneDrive\Documents\facultate anul 4\AI\Proiect\AI\OcupancyDetection\OcupancyDetection\bin\Debug\OcupancyDetection.pdb
+C:\Users\ionut\OneDrive\Documents\facultate anul 4\AI\Proiect\AI\OcupancyDetection\OcupancyDetection\obj\Debug\OcupancyDetection.csprojAssemblyReference.cache
+C:\Users\ionut\OneDrive\Documents\facultate anul 4\AI\Proiect\AI\OcupancyDetection\OcupancyDetection\obj\Debug\OcupancyDetection.Form1.resources
+C:\Users\ionut\OneDrive\Documents\facultate anul 4\AI\Proiect\AI\OcupancyDetection\OcupancyDetection\obj\Debug\OcupancyDetection.Properties.Resources.resources
+C:\Users\ionut\OneDrive\Documents\facultate anul 4\AI\Proiect\AI\OcupancyDetection\OcupancyDetection\obj\Debug\OcupancyDetection.csproj.GenerateResource.cache
+C:\Users\ionut\OneDrive\Documents\facultate anul 4\AI\Proiect\AI\OcupancyDetection\OcupancyDetection\obj\Debug\OcupancyDetection.exe
+C:\Users\ionut\OneDrive\Documents\facultate anul 4\AI\Proiect\AI\OcupancyDetection\OcupancyDetection\obj\Debug\OcupancyDetection.pdb
