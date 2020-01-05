@@ -6,11 +6,19 @@ C:\Users\Eu\Desktop\ProiectIa\AI\OcupancyDetection\OcupancyDetection\obj\Debug\O
 C:\Users\Eu\Desktop\ProiectIa\AI\OcupancyDetection\OcupancyDetection\obj\Debug\OcupancyDetection.csproj.GenerateResource.Cache
 C:\Users\Eu\Desktop\ProiectIa\AI\OcupancyDetection\OcupancyDetection\obj\Debug\OcupancyDetection.exe
 C:\Users\Eu\Desktop\ProiectIa\AI\OcupancyDetection\OcupancyDetection\obj\Debug\OcupancyDetection.pdb
-C:\Users\ionut\OneDrive\Documents\facultate anul 4\AI\Proiect\AI\OcupancyDetection\OcupancyDetection\bin\Debug\OcupancyDetection.exe
-C:\Users\ionut\OneDrive\Documents\facultate anul 4\AI\Proiect\AI\OcupancyDetection\OcupancyDetection\bin\Debug\OcupancyDetection.pdb
-C:\Users\ionut\OneDrive\Documents\facultate anul 4\AI\Proiect\AI\OcupancyDetection\OcupancyDetection\obj\Debug\OcupancyDetection.csprojAssemblyReference.cache
-C:\Users\ionut\OneDrive\Documents\facultate anul 4\AI\Proiect\AI\OcupancyDetection\OcupancyDetection\obj\Debug\OcupancyDetection.Form1.resources
-C:\Users\ionut\OneDrive\Documents\facultate anul 4\AI\Proiect\AI\OcupancyDetection\OcupancyDetection\obj\Debug\OcupancyDetection.Properties.Resources.resources
-C:\Users\ionut\OneDrive\Documents\facultate anul 4\AI\Proiect\AI\OcupancyDetection\OcupancyDetection\obj\Debug\OcupancyDetection.csproj.GenerateResource.cache
-C:\Users\ionut\OneDrive\Documents\facultate anul 4\AI\Proiect\AI\OcupancyDetection\OcupancyDetection\obj\Debug\OcupancyDetection.exe
-C:\Users\ionut\OneDrive\Documents\facultate anul 4\AI\Proiect\AI\OcupancyDetection\OcupancyDetection\obj\Debug\OcupancyDetection.pdb
+D:\IA\proiect\AI-geneticStrategy\OcupancyDetection\OcupancyDetection\obj\Debug\OcupancyDetection.Form1.resources
+D:\IA\proiect\AI-geneticStrategy\OcupancyDetection\OcupancyDetection\obj\Debug\OcupancyDetection.Properties.Resources.resources
+D:\IA\proiect\AI-geneticStrategy\OcupancyDetection\OcupancyDetection\obj\Debug\OcupancyDetection.csproj.GenerateResource.cache
+D:\IA\proiect\AI-geneticStrategy\OcupancyDetection\OcupancyDetection\bin\Debug\OcupancyDetection.exe
+D:\IA\proiect\AI-geneticStrategy\OcupancyDetection\OcupancyDetection\bin\Debug\OcupancyDetection.pdb
+D:\IA\proiect\AI-geneticStrategy\OcupancyDetection\OcupancyDetection\obj\Debug\OcupancyDetection.exe
+D:\IA\proiect\AI-geneticStrategy\OcupancyDetection\OcupancyDetection\obj\Debug\OcupancyDetection.pdb
+D:\IA\proiect\AI-geneticStrategy\OcupancyDetection\OcupancyDetection\obj\Debug\OcupancyDetection.csprojAssemblyReference.cache
+D:\IA\GitRep\AI\OcupancyDetection\OcupancyDetection\bin\Debug\OcupancyDetection.exe
+D:\IA\GitRep\AI\OcupancyDetection\OcupancyDetection\bin\Debug\OcupancyDetection.pdb
+D:\IA\GitRep\AI\OcupancyDetection\OcupancyDetection\obj\Debug\OcupancyDetection.csprojAssemblyReference.cache
+D:\IA\GitRep\AI\OcupancyDetection\OcupancyDetection\obj\Debug\OcupancyDetection.Form1.resources
+D:\IA\GitRep\AI\OcupancyDetection\OcupancyDetection\obj\Debug\OcupancyDetection.Properties.Resources.resources
+D:\IA\GitRep\AI\OcupancyDetection\OcupancyDetection\obj\Debug\OcupancyDetection.csproj.GenerateResource.cache
+D:\IA\GitRep\AI\OcupancyDetection\OcupancyDetection\obj\Debug\OcupancyDetection.exe
+D:\IA\GitRep\AI\OcupancyDetection\OcupancyDetection\obj\Debug\OcupancyDetection.pdb

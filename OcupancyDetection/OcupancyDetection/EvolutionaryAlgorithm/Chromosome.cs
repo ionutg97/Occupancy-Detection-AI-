@@ -49,13 +49,13 @@ namespace OcupancyDetection
         public String ToString()
         {
             String rez = "";
-          /*  for(int i=0;i<noGenes;i++)
+        /*    for(int i=0;i<noGenes;i++)
             {
                 if (alfa[i] != 0.0)
                     rez += alfa[i].ToString() + " ";
 
             }*/
-            rez += "\nF: " + this.Fitness;
+            rez += "\t Fitness: " + this.Fitness;
             return rez;
         }
 
