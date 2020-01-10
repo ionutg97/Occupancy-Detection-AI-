@@ -11,29 +11,25 @@ namespace OcupancyDetection.EvolutionaryAlgorithm
             
         public static void ComputeFitness(Chromosome chromosome, DataSet dataSet,double gamma)
         {
-
             //trebuie fortata constrangerea, ajustam valorile afla ca suma de alfai * yi = 0 ;
             double []newAlfa = utils.Util.AdjustmentAlgorithm(chromosome.alfa, dataSet.y);
             chromosome.alfa = newAlfa;
 
             double suma1 = 0.0; //prima suma din functie       
-            double suma2 = 0.0;
+            double suma2 = 0.0; //adoua suma din functie
 
             for (int i = 0; i < newAlfa.Length; i++)
             {
-                    suma1 += newAlfa[i];
+                suma1 += newAlfa[i];
                 for (int j = 0; j < newAlfa.Length; j++)
                 {
                     if (newAlfa[j] != 0.0 && newAlfa[i] != 0.0)
-                    {
-                    
-                            suma2 += dataSet.y[i] * dataSet.y[j] * newAlfa[i] * newAlfa[j] * utils.Util.gaussianKernel(dataSet.instanta[i].x, dataSet.instanta[j].x, gamma);
-                     
+                    {                    
+                            suma2 += dataSet.y[i] * dataSet.y[j] * newAlfa[i] * newAlfa[j] * utils.Util.gaussianKernel(dataSet.instanta[i].x, dataSet.instanta[j].x, gamma);                     
                     }
                 }
                 
             } 
-
             double fitness = suma1 - 0.5 * suma2;   //forma duala
             chromosome.Fitness = fitness;
         }
