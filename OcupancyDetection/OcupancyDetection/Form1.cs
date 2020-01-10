@@ -21,22 +21,18 @@ namespace OcupancyDetection
             InitializeComponent();
         }
 
-        public static DataSet readData(String filename,Boolean trainig)
+        public static DataSet readData(String filename)
         {
-            string[] lines = System.IO.File.ReadAllLines("Dataset/"+filename);
-            int size = lines.Length-1, skip = 1;
-            if(trainig==true)   //pentru training iau doar 100 de instante pentru viteza
-            {
-                size = 100;
-                skip = 8000/size;
-            }
+            string[] lines = System.IO.File.ReadAllLines("Dataset/" + filename);
+            int size = lines.Length - 1;
+         
 
             DataSet dataset = new DataSet(size);
             String[] args;
             InputData inputData;
             int nrAtributes;
             int index = 1;
-            for (int i = 1; i <= size*skip; i+=skip) //prima linie este capul de tabel
+            for (int i = 1; i <= lines.Length - 1; i += 1) //prima linie este capul de tabel
             {
                 args = lines[i].Replace("\"", "").Split(','); //campurile instantei
                 nrAtributes = args.Length - 2; //primul e un id ce poate fi ignorat, iar ultimul este clasa
@@ -54,24 +50,24 @@ namespace OcupancyDetection
             return dataset;
         }
 
-        public static double ComputeB(double [] alfa, InputData [] x, double [] y,double gamma)
+        public static double ComputeB(double[] alfa, InputData[] x, double[] y, double gamma)
         {
             int S = 0; //numarul vectorilor suport
             double sumat = 0.0, sumas = 0.0;
-            for(int s=0;s<alfa.Length;s++)
+            for (int s = 0; s < alfa.Length; s++)
             {
-                if(alfa[s]!=0.0)    //atunci este vector suport
+                if (alfa[s] != 0.0)    //atunci este vector suport
                 {
                     S++;
                     sumat = 0.0;
-                    for(int t=0;t<alfa.Length;t++)
+                    for (int t = 0; t < alfa.Length; t++)
                     {
                         if (alfa[t] != 0.0)
                         {
 
                             sumat += alfa[t] * y[t] * utils.Util.gaussianKernel(x[t].x, x[s].x, gamma);
-                        }       
-                        
+                        }
+
                     }
                     sumas += y[s] - sumat;
 
@@ -80,15 +76,15 @@ namespace OcupancyDetection
             return (1.0 / (double)S) * sumas;
         }
 
-        public static double functieDiscriminant(double []x, double [] alfa, DataSet dataset, double b,double gama)
+        public static double functieDiscriminant(double[] x, double[] alfa, DataSet dataset, double b, double gama)
         {
             double suma = 0.0;
-            for(int i=0;i<alfa.Length;i++)
+            for (int i = 0; i < alfa.Length; i++)
             {
                 if (alfa[i] != 0.0) //altfel produsul ar fi 0
                 {
-                  
-                        suma += alfa[i] * dataset.y[i] * utils.Util.gaussianKernel(dataset.instanta[i].x, x, gama);
+
+                    suma += alfa[i] * dataset.y[i] * utils.Util.gaussianKernel(dataset.instanta[i].x, x, gama);
 
                 }
             }
@@ -97,10 +93,10 @@ namespace OcupancyDetection
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            DataSet dataSet = readData("datatraining2.txt", true);
-            DataSet datatest1 = readData("datatest.txt", false);
-            DataSet datatest2 = readData("datatest2.txt", false);
+            //  withOutTest();
+            DataSet dataSet = readData("datatraining2.txt");
+            DataSet datatest1 = readData("datatest.txt");
+            DataSet datatest2 = readData("datatest2.txt");
 
             populationSize.Text = PopulationSizeTest.ToString();
             maxGenerations.Text = NumGenTest.ToString();
@@ -116,7 +112,7 @@ namespace OcupancyDetection
             outValues[2] = "\t maxGenerations: " + maxGenerations.Text;
             outValues[3] = "\t crossoverRate: " + crossoverRate.Text;
             outValues[4] = "\t mutationRate: " + mutationRate.Text;
-            
+
             while (gamaTest <= 0.00001)
             {
                 for (int costIndex = 0; costIndex < 1; costIndex++)
@@ -171,10 +167,10 @@ namespace OcupancyDetection
                     {
                         foreach (string val in outValues)
                         {
-                            tw.WriteLine(val);
+                            // tw.WriteLine(val);
                         }
                     }
-                    testIndex++; 
+                    testIndex++;
                 }
                 if (gamaTest >= 1)
                 {
@@ -185,9 +181,59 @@ namespace OcupancyDetection
                 {
                     gamaTest *= 10;
                 }
-                
+
             }
-        
+        }
+
+
+        private  void withOutTest()
+        {
+            DataSet dataSet = readData("datatraining2.txt");
+
+            EvolutionaryAlgorithm.EvolutionaryAlgorithm ea = new EvolutionaryAlgorithm.EvolutionaryAlgorithm();
+
+            int populationNumber = Int32.Parse(populationSize.Text);
+            int generations = Int32.Parse(maxGenerations.Text);
+            double crossover = Double.Parse(crossoverRate.Text);
+            double mutation = Double.Parse(mutationRate.Text);
+            double cost = Double.Parse(C.Text);
+            double gama = Double.Parse(gamma.Text);
+
+
+            Chromosome solution = ea.Solve(dataSet, populationNumber, generations, crossover, mutation, cost, gama);
+            output.Text += solution.ToString();
+            double b = ComputeB(solution.alfa, dataSet.instanta, dataSet.y, gama);
+
+            DataSet datatest = readData("datatest.txt");
+
+            double nrTotal = 0.0, nrCorect = 0.0;
+            for (int j = 0; j < datatest.size; j++)
+            {
+                double nou = functieDiscriminant(datatest.instanta[j].x, solution.alfa, dataSet, b, gama);
+                nou = nou > 0.0 ? 1.0 : -1.0;
+                if (nou == datatest.y[j])
+                    nrCorect++;
+
+                nrTotal++;
+            }
+            output.Text += "\nProcent clasificare datatest1 : " + ((nrCorect / nrTotal) * 100).ToString() + "%\n";
+            datatest = readData("datatest2.txt");
+
+            nrTotal = 0.0;
+            nrCorect = 0.0;
+            for (int j = 0; j < datatest.size; j++)
+            {
+                double nou = functieDiscriminant(datatest.instanta[j].x, solution.alfa, dataSet, b, gama);
+                nou = nou > 0.0 ? 1.0 : -1.0;
+                if (nou == datatest.y[j])
+                    nrCorect++;
+
+                nrTotal++;
+            }
+            output.Text += "\nProcent clasificare datatest2 : " + ((nrCorect / nrTotal) * 100).ToString() + "%\n";
+
         }
     }
+        
+    
 }

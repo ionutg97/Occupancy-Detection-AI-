@@ -8,16 +8,7 @@ namespace OcupancyDetection.utils
     public class Util
     {
         private static Random _rand = new Random();
-        public static double produsScalar(double[] xi, double[] xj)
-        {
-            double rezultat = 0.0;
-            for (int i = 0; i < xi.Length; i++)
-            {
-                rezultat += xi[i] * xj[i];
-            }
-            return rezultat;
-        }
-       
+      
         
         public static double gaussianKernel(double[] x, double[] z, double gamma)
         {
