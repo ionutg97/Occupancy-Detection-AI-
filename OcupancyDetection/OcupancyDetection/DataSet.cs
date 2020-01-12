@@ -7,7 +7,7 @@ namespace OcupancyDetection
 {
     public class DataSet
     {
-        public int size;
+       public int size;
        public InputData[] instanta { get; set; } //lista cu instantele de antrenare
        public double [] y { get; set; } //iesirea corespunzatoare instanta[i] are iesirea y[i]
 

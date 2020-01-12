@@ -1,0 +1,800 @@
+Test: 1 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 10
+	 gama: 1E-05
+
+ Output: 
+ 	 Fitness: -99.9495808622225
+	 Procent clasificare datatest1: 94.8217636022514
+	 Procent clasificare datatest2 : 94.4114027891714
+}
+
+Test: 2 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 25
+	 gama: 1E-05
+
+ Output: 
+ 	 Fitness: -274.671649430882
+	 Procent clasificare datatest1: 96.6979362101313
+	 Procent clasificare datatest2 : 99.3232157506153
+}
+
+Test: 3 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 40
+	 gama: 1E-05
+
+ Output: 
+ 	 Fitness: -376.079338396296
+	 Procent clasificare datatest1: 93.9587242026266
+	 Procent clasificare datatest2 : 94.8010664479081
+}
+
+Test: 4 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 55
+	 gama: 1E-05
+
+ Output: 
+ 	 Fitness: -1322.12191471757
+	 Procent clasificare datatest1: 97.5609756097561
+	 Procent clasificare datatest2 : 97.6825266611977
+}
+
+Test: 5 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 70
+	 gama: 1E-05
+
+ Output: 
+ 	 Fitness: -180.444397660405
+	 Procent clasificare datatest1: 86.8667917448405
+	 Procent clasificare datatest2 : 80.2091878589007
+}
+
+Test: 6 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 85
+	 gama: 1E-05
+
+ Output: 
+ 	 Fitness: -4951.97288580948
+	 Procent clasificare datatest1: 96.0975609756098
+	 Procent clasificare datatest2 : 98.4413453650533
+}
+
+Test: 7 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 100
+	 gama: 1E-05
+
+ Output: 
+ 	 Fitness: -9706.31670013737
+	 Procent clasificare datatest1: 96.2476547842402
+	 Procent clasificare datatest2 : 98.2977850697293
+}
+
+Test: 8 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 10
+	 gama: 0.0001
+
+ Output: 
+ 	 Fitness: -71.1777062635293
+	 Procent clasificare datatest1: 90.9193245778612
+	 Procent clasificare datatest2 : 91.304347826087
+}
+
+Test: 9 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 25
+	 gama: 0.0001
+
+ Output: 
+ 	 Fitness: -724.916536068193
+	 Procent clasificare datatest1: 86.9793621013133
+	 Procent clasificare datatest2 : 91.3863822805578
+}
+
+Test: 10 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 40
+	 gama: 0.0001
+
+ Output: 
+ 	 Fitness: -1392.1337728
+	 Procent clasificare datatest1: 93.6960600375235
+	 Procent clasificare datatest2 : 87.0795734208368
+}
+
+Test: 11 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 55
+	 gama: 0.0001
+
+ Output: 
+ 	 Fitness: -2419.00377811899
+	 Procent clasificare datatest1: 92.1200750469043
+	 Procent clasificare datatest2 : 92.1964725184578
+}
+
+Test: 12 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 70
+	 gama: 0.0001
+
+ Output: 
+ 	 Fitness: -4391.92961395558
+	 Procent clasificare datatest1: 87.7673545966229
+	 Procent clasificare datatest2 : 63.0537325676784
+}
+
+Test: 13 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 85
+	 gama: 0.0001
+
+ Output: 
+ 	 Fitness: -9230.87558618433
+	 Procent clasificare datatest1: 93.0581613508443
+	 Procent clasificare datatest2 : 83.7776866283839
+}
+
+Test: 14 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 100
+	 gama: 0.0001
+
+ Output: 
+ 	 Fitness: -4487.75419939975
+	 Procent clasificare datatest1: 91.219512195122
+	 Procent clasificare datatest2 : 76.8970467596391
+}
+
+Test: 15 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 10
+	 gama: 0.001
+
+ Output: 
+ 	 Fitness: -39.2477520462377
+	 Procent clasificare datatest1: 82.8893058161351
+	 Procent clasificare datatest2 : 54.6554552912223
+}
+
+Test: 16 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 25
+	 gama: 0.001
+
+ Output: 
+ 	 Fitness: -661.031520438845
+	 Procent clasificare datatest1: 85.0281425891182
+	 Procent clasificare datatest2 : 54.8195242001641
+}
+
+Test: 17 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 40
+	 gama: 0.001
+
+ Output: 
+ 	 Fitness: -1595.70215582472
+	 Procent clasificare datatest1: 85.3658536585366
+	 Procent clasificare datatest2 : 53.6197703035275
+}
+
+Test: 18 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 55
+	 gama: 0.001
+
+ Output: 
+ 	 Fitness: -2773.84158034048
+	 Procent clasificare datatest1: 88.1050656660413
+	 Procent clasificare datatest2 : 61.7104183757178
+}
+
+Test: 19 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 70
+	 gama: 0.001
+
+ Output: 
+ 	 Fitness: -4998.24732959304
+	 Procent clasificare datatest1: 87.7673545966229
+	 Procent clasificare datatest2 : 59.5672682526661
+}
+
+Test: 20 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 85
+	 gama: 0.001
+
+ Output: 
+ 	 Fitness: -5149.20400729516
+	 Procent clasificare datatest1: 82.5140712945591
+	 Procent clasificare datatest2 : 89.1714520098441
+}
+
+Test: 21 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 100
+	 gama: 0.001
+
+ Output: 
+ 	 Fitness: -5696.00110013235
+	 Procent clasificare datatest1: 83.4896810506567
+	 Procent clasificare datatest2 : 91.8068088597211
+}
+
+Test: 22 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 10
+	 gama: 0.01
+
+ Output: 
+ 	 Fitness: -64.5865722420039
+	 Procent clasificare datatest1: 75.046904315197
+	 Procent clasificare datatest2 : 25.2153404429861
+}
+
+Test: 23 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 25
+	 gama: 0.01
+
+ Output: 
+ 	 Fitness: -391.05232988949
+	 Procent clasificare datatest1: 69.5684803001876
+	 Procent clasificare datatest2 : 24.6410992616899
+}
+
+Test: 24 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 40
+	 gama: 0.01
+
+ Output: 
+ 	 Fitness: -1097.43661439735
+	 Procent clasificare datatest1: 68.780487804878
+	 Procent clasificare datatest2 : 29.2555373256768
+}
+
+Test: 25 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 55
+	 gama: 0.01
+
+ Output: 
+ 	 Fitness: -2560.73148318921
+	 Procent clasificare datatest1: 77.4859287054409
+	 Procent clasificare datatest2 : 26.5586546349467
+}
+
+Test: 26 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 70
+	 gama: 0.01
+
+ Output: 
+ 	 Fitness: -5166.52008820936
+	 Procent clasificare datatest1: 68.5928705440901
+	 Procent clasificare datatest2 : 21.5135356849877
+}
+
+Test: 27 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 85
+	 gama: 0.01
+
+ Output: 
+ 	 Fitness: -7887.81704127365
+	 Procent clasificare datatest1: 74.1463414634146
+	 Procent clasificare datatest2 : 22.590237899918
+}
+
+Test: 28 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 100
+	 gama: 0.01
+
+ Output: 
+ 	 Fitness: -3925.73195711797
+	 Procent clasificare datatest1: 72.0450281425891
+	 Procent clasificare datatest2 : 22.6722723543888
+}
+
+Test: 29 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 10
+	 gama: 0.1
+
+ Output: 
+ 	 Fitness: -30.3112179702882
+	 Procent clasificare datatest1: 74.8968105065666
+	 Procent clasificare datatest2 : 24.2924528301887
+}
+
+Test: 30 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 25
+	 gama: 0.1
+
+ Output: 
+ 	 Fitness: -502.540693946725
+	 Procent clasificare datatest1: 43.3020637898687
+	 Procent clasificare datatest2 : 21.0623461853979
+}
+
+Test: 31 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 40
+	 gama: 0.1
+
+ Output: 
+ 	 Fitness: -1059.97585974192
+	 Procent clasificare datatest1: 50.0562851782364
+	 Procent clasificare datatest2 : 21.564807219032
+}
+
+Test: 32 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 55
+	 gama: 0.1
+
+ Output: 
+ 	 Fitness: -2511.82410143271
+	 Procent clasificare datatest1: 53.3583489681051
+	 Procent clasificare datatest2 : 21.0110746513536
+}
+
+Test: 33 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 70
+	 gama: 0.1
+
+ Output: 
+ 	 Fitness: -3802.35303559792
+	 Procent clasificare datatest1: 45.5909943714822
+	 Procent clasificare datatest2 : 21.0110746513536
+}
+
+Test: 34 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 85
+	 gama: 0.1
+
+ Output: 
+ 	 Fitness: -5805.58279274758
+	 Procent clasificare datatest1: 38.2739212007505
+	 Procent clasificare datatest2 : 21.195652173913
+}
+
+Test: 35 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 100
+	 gama: 0.1
+
+ Output: 
+ 	 Fitness: -8556.58822392474
+	 Procent clasificare datatest1: 43.7148217636023
+	 Procent clasificare datatest2 : 21.9031993437244
+}
+
+Test: 36 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 10
+	 gama: 1
+
+ Output: 
+ 	 Fitness: -4.51731021926156
+	 Procent clasificare datatest1: 63.5272045028143
+	 Procent clasificare datatest2 : 78.9889253486464
+}
+
+Test: 37 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 25
+	 gama: 1
+
+ Output: 
+ 	 Fitness: -350.661298671348
+	 Procent clasificare datatest1: 63.5272045028143
+	 Procent clasificare datatest2 : 78.9889253486464
+}
+
+Test: 38 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 40
+	 gama: 1
+
+ Output: 
+ 	 Fitness: -1189.93574936367
+	 Procent clasificare datatest1: 36.6228893058161
+	 Procent clasificare datatest2 : 21.0110746513536
+}
+
+Test: 39 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 55
+	 gama: 1
+
+ Output: 
+ 	 Fitness: -2141.39549225568
+	 Procent clasificare datatest1: 38.5741088180113
+	 Procent clasificare datatest2 : 21.0110746513536
+}
+
+Test: 40 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 70
+	 gama: 1
+
+ Output: 
+ 	 Fitness: -3161.66398910075
+	 Procent clasificare datatest1: 36.4727954971857
+	 Procent clasificare datatest2 : 21.0110746513536
+}
+
+Test: 41 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 85
+	 gama: 1
+
+ Output: 
+ 	 Fitness: -6736.82800832188
+	 Procent clasificare datatest1: 36.7729831144465
+	 Procent clasificare datatest2 : 21.0110746513536
+}
+
+Test: 42 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 100
+	 gama: 1
+
+ Output: 
+ 	 Fitness: -8067.70451883567
+	 Procent clasificare datatest1: 36.9230769230769
+	 Procent clasificare datatest2 : 21.0110746513536
+}
+
+Test: 43 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 10
+	 gama: 1.1
+
+ Output: 
+ 	 Fitness: -12.2478085700337
+	 Procent clasificare datatest1: 63.5272045028143
+	 Procent clasificare datatest2 : 78.9889253486464
+}
+
+Test: 44 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 25
+	 gama: 1.1
+
+ Output: 
+ 	 Fitness: -382.321056962051
+	 Procent clasificare datatest1: 63.5272045028143
+	 Procent clasificare datatest2 : 78.9889253486464
+}
+
+Test: 45 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 40
+	 gama: 1.1
+
+ Output: 
+ 	 Fitness: -1275.17213045551
+	 Procent clasificare datatest1: 63.5272045028143
+	 Procent clasificare datatest2 : 78.9889253486464
+}
+
+Test: 46 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 55
+	 gama: 1.1
+
+ Output: 
+ 	 Fitness: -2840.96299327884
+	 Procent clasificare datatest1: 36.9606003752345
+	 Procent clasificare datatest2 : 21.0110746513536
+}
+
+Test: 47 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 70
+	 gama: 1.1
+
+ Output: 
+ 	 Fitness: -4016.56477766733
+	 Procent clasificare datatest1: 37.8611632270169
+	 Procent clasificare datatest2 : 21.0110746513536
+}
+
+Test: 48 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 85
+	 gama: 1.1
+
+ Output: 
+ 	 Fitness: -7777.6492267415
+	 Procent clasificare datatest1: 37.2232645403377
+	 Procent clasificare datatest2 : 21.0110746513536
+}
+
+Test: 49 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 100
+	 gama: 1.1
+
+ Output: 
+ 	 Fitness: -7468.66322826026
+	 Procent clasificare datatest1: 63.5272045028143
+	 Procent clasificare datatest2 : 78.9889253486464
+}
+
+Test: 1 
+ { 
+ Input:
+	 populationSize: 50
+	 maxGenerations: 7000
+	 crossoverRate: 0.90
+	 mutationRate: 0.1
+	 cost: 1
+	 gama: 1E-05
+
+ Output: 
+ 	 Fitness: 5.51675982454056
+	 Procent clasificare datatest1: 97.2607879924953
+	 Procent clasificare datatest2 : 97.733798195242
+}
+

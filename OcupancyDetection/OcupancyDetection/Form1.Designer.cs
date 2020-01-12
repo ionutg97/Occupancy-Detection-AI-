@@ -40,6 +40,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.gamma = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -54,9 +56,9 @@
             // 
             // output
             // 
-            this.output.Location = new System.Drawing.Point(29, 70);
+            this.output.Location = new System.Drawing.Point(32, 125);
             this.output.Name = "output";
-            this.output.Size = new System.Drawing.Size(796, 239);
+            this.output.Size = new System.Drawing.Size(793, 184);
             this.output.TabIndex = 1;
             this.output.Text = "";
             // 
@@ -74,7 +76,7 @@
             this.maxGenerations.Name = "maxGenerations";
             this.maxGenerations.Size = new System.Drawing.Size(73, 20);
             this.maxGenerations.TabIndex = 3;
-            this.maxGenerations.Text = "10000";
+            this.maxGenerations.Text = "5000";
             // 
             // crossoverRate
             // 
@@ -145,11 +147,30 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Costul C";
             // 
+            // gamma
+            // 
+            this.gamma.Location = new System.Drawing.Point(619, 32);
+            this.gamma.Name = "gamma";
+            this.gamma.Size = new System.Drawing.Size(73, 20);
+            this.gamma.TabIndex = 10;
+            this.gamma.Text = "0.00001";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(616, 9);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(43, 13);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Gamma";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(864, 342);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.gamma);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -163,7 +184,7 @@
             this.Controls.Add(this.output);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Ocupancy Detection";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -183,6 +204,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox gamma;
+        private System.Windows.Forms.Label label6;
     }
 }
 

@@ -8,7 +8,7 @@ namespace OcupancyDetection.EvolutionaryAlgorithm
     class Selection
     {
         private static Random _rand = new Random();
-
+        
         public static Chromosome Tournament(Chromosome[] population)
         {
             int indexi = _rand.Next(0, population.Length);
@@ -18,10 +18,11 @@ namespace OcupancyDetection.EvolutionaryAlgorithm
                 indexj = _rand.Next(0, population.Length);
             } while(indexi == indexj);
             if (population[indexi].Fitness > population[indexj].Fitness)
-               return population[indexi];
+               return new Chromosome( population[indexi]);
 
-            return population[indexj];
+            return new Chromosome(population[indexj]);
         }
+     
 
         public static Chromosome GetBest(Chromosome[] population)
         {
