@@ -93,25 +93,80 @@ namespace OcupancyDetection
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //  withOutTest();
-            DataSet dataSet = readData("datatraining2.txt");
-            DataSet datatest1 = readData("datatest.txt");
-            DataSet datatest2 = readData("datatest2.txt");
+            Clasification();
+           // TestCases();
+        }
 
-            populationSize.Text = PopulationSizeTest.ToString();
-            maxGenerations.Text = NumGenTest.ToString();
+
+        private  void Clasification()
+        {
+            DataSet dataSet = readData("datatraining2.txt");
+
+            EvolutionaryAlgorithm.EvolutionaryAlgorithm ea = new EvolutionaryAlgorithm.EvolutionaryAlgorithm();
 
             int populationNumber = Int32.Parse(populationSize.Text);
             int generations = Int32.Parse(maxGenerations.Text);
             double crossover = Double.Parse(crossoverRate.Text);
             double mutation = Double.Parse(mutationRate.Text);
-            int testIndex = 1;
-            double nrOne = 10;
+            double cost = Double.Parse(C.Text);
+            double gama = Double.Parse(gamma.Text);
 
-            outValues[1] = "\t populationSize: " + populationSize.Text;
-            outValues[2] = "\t maxGenerations: " + maxGenerations.Text;
-            outValues[3] = "\t crossoverRate: " + crossoverRate.Text;
-            outValues[4] = "\t mutationRate: " + mutationRate.Text;
+
+            Chromosome solution = ea.Solve(dataSet, populationNumber, generations, crossover, mutation, cost, gama);
+            output.Text += solution.ToString();
+
+            double b = ComputeB(solution.alfa, dataSet.instanta, dataSet.y, gama);
+
+            DataSet datatest = readData("datatest.txt");
+
+            double nrTotal = 0.0, nrCorect = 0.0;
+            for (int j = 0; j < datatest.size; j++)
+            {
+                double nou = functieDiscriminant(datatest.instanta[j].x, solution.alfa, dataSet, b, gama);
+                nou = nou > 0.0 ? 1.0 : -1.0;
+                if (nou == datatest.y[j])
+                    nrCorect++;
+
+                nrTotal++;
+            }
+            output.Text += "\nProcent clasificare datatest1 : " + ((nrCorect / nrTotal) * 100).ToString() + "%\n";
+            datatest = readData("datatest2.txt");
+
+            nrTotal = 0.0;
+            nrCorect = 0.0;
+            for (int j = 0; j < datatest.size; j++)
+            {
+                double nou = functieDiscriminant(datatest.instanta[j].x, solution.alfa, dataSet, b, gama);
+                nou = nou > 0.0 ? 1.0 : -1.0;
+                if (nou == datatest.y[j])
+                    nrCorect++;
+
+                nrTotal++;
+            }
+            output.Text += "\nProcent clasificare datatest2 : " + ((nrCorect / nrTotal) * 100).ToString() + "%\n";
+
+        }
+        private void TestCases()
+        {
+            
+              DataSet dataSet = readData("datatraining2.txt");
+              DataSet datatest1 = readData("datatest.txt");
+              DataSet datatest2 = readData("datatest2.txt");
+
+              populationSize.Text = PopulationSizeTest.ToString();
+              maxGenerations.Text = NumGenTest.ToString();
+
+              int populationNumber = Int32.Parse(populationSize.Text);
+              int generations = Int32.Parse(maxGenerations.Text);
+              double crossover = Double.Parse(crossoverRate.Text);
+              double mutation = Double.Parse(mutationRate.Text);
+              int testIndex = 1;
+              double nrOne = 10;
+
+              outValues[1] = "\t populationSize: " + populationSize.Text;
+              outValues[2] = "\t maxGenerations: " + maxGenerations.Text;
+              outValues[3] = "\t crossoverRate: " + crossoverRate.Text;
+              outValues[4] = "\t mutationRate: " + mutationRate.Text;
 
             while (gamaTest <= 0.00001)
             {
@@ -183,55 +238,6 @@ namespace OcupancyDetection
                 }
 
             }
-        }
-
-
-        private  void withOutTest()
-        {
-            DataSet dataSet = readData("datatraining2.txt");
-
-            EvolutionaryAlgorithm.EvolutionaryAlgorithm ea = new EvolutionaryAlgorithm.EvolutionaryAlgorithm();
-
-            int populationNumber = Int32.Parse(populationSize.Text);
-            int generations = Int32.Parse(maxGenerations.Text);
-            double crossover = Double.Parse(crossoverRate.Text);
-            double mutation = Double.Parse(mutationRate.Text);
-            double cost = Double.Parse(C.Text);
-            double gama = Double.Parse(gamma.Text);
-
-
-            Chromosome solution = ea.Solve(dataSet, populationNumber, generations, crossover, mutation, cost, gama);
-            output.Text += solution.ToString();
-            double b = ComputeB(solution.alfa, dataSet.instanta, dataSet.y, gama);
-
-            DataSet datatest = readData("datatest.txt");
-
-            double nrTotal = 0.0, nrCorect = 0.0;
-            for (int j = 0; j < datatest.size; j++)
-            {
-                double nou = functieDiscriminant(datatest.instanta[j].x, solution.alfa, dataSet, b, gama);
-                nou = nou > 0.0 ? 1.0 : -1.0;
-                if (nou == datatest.y[j])
-                    nrCorect++;
-
-                nrTotal++;
-            }
-            output.Text += "\nProcent clasificare datatest1 : " + ((nrCorect / nrTotal) * 100).ToString() + "%\n";
-            datatest = readData("datatest2.txt");
-
-            nrTotal = 0.0;
-            nrCorect = 0.0;
-            for (int j = 0; j < datatest.size; j++)
-            {
-                double nou = functieDiscriminant(datatest.instanta[j].x, solution.alfa, dataSet, b, gama);
-                nou = nou > 0.0 ? 1.0 : -1.0;
-                if (nou == datatest.y[j])
-                    nrCorect++;
-
-                nrTotal++;
-            }
-            output.Text += "\nProcent clasificare datatest2 : " + ((nrCorect / nrTotal) * 100).ToString() + "%\n";
-
         }
     }
         
